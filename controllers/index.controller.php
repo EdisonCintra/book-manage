@@ -1,6 +1,6 @@
 <?php
 
-require 'dados.php';
+$livros = (new DB)->livros();
 
 view('index',[
     'livros' => $livros
