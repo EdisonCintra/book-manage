@@ -1,10 +1,5 @@
 <?php
 
-$id = $_REQUEST['id'];
-$db = new DB; 
-$livro = $db->livro($id);
+$livro = (new DB)->livro($_REQUEST['id']);
 
-view("livro", [
-    "livro" => $livro
-])
-?>
+view('livro', compact('livro'));

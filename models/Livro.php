@@ -14,22 +14,9 @@ class Livro {
     public $autor;
 
     public $descricao;
-     
 
-    public static function make($item) {
+    public $ano_de_lancamento;
 
-        $livro = new self();
-
-        $livro->id = $item['id'];
-
-        $livro->titulo = $item['titulo'];
-
-        $livro->autor = $item['autor'];
-
-        $livro->descricao = $item['descricao'];
-
-        return $livro;
-
-    }
+    public $usuario_id;
 
 }
