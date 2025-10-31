@@ -1,16 +1,17 @@
 <?php
 
-$path = parse_url($_SERVER['REQUEST_URI'])['path'];
+$url = $_GET['url'] ?? '';
 
-$basePath = '/book-manage';
-$controller = str_replace($basePath, '', $path);
+switch ($url) {
+    case 'login':
+        require 'controllers/login.controller.php';
+        break;
 
-$controller = trim($controller, '/');
+    case 'registrar':
+        require 'controllers/registrar.controller.php';
+        break;
 
-if (!$controller) $controller = 'index';
-
-if (!file_exists("controllers/{$controller}.controller.php")) {
-    abort(404);
+    default:
+        require 'controllers/index.controller.php';
+        break;
 }
-
-require "controllers/{$controller}.controller.php";
