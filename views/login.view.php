@@ -57,6 +57,7 @@
                     </ul>
 
                 </div>
+                <?php unset($_SESSION['validacoes']); // limpa flash ?>
 
             <?php endif; ?>
 
