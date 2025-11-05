@@ -1,6 +1,26 @@
 <?php
 
+require 'Validacao.php';
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+    $validacao = Validacao::validar([
+
+        'nome' => ['required'],
+        'email' => ['required', 'email', 'confirmed'],
+        'senha' => ['required', 'min:8', 'max:30', 'strong']
+
+    ], $_POST);
+
+    if ($validacao->naoPassou()) {
+
+        $_SESSION['validacoes'] = $validacao->validacoes;
+
+        header("Location: /login");
+
+        exit();
+
+    }
 
     $validacoes = [];
 
@@ -58,7 +78,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         $_SESSION['validacoes'] = $validacoes;
 
-        header("Location: /book-manage/login");
+        header("Location: /login");
 
         exit();
 
@@ -76,7 +96,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     );
 
-    header('location: /book-manage/login?mensagem=Registrado com sucesso!');
+    header('location: /login?mensagem=Registrado com sucesso!');
 
     exit();
 
