@@ -25,9 +25,9 @@
 
             <ul>
                 <?php if(isset($_SESSION['auth'])): ?>
-                    <li><a href="/logout">Oi, <?= $_SESSION['auth']['nome']?> </a></li> 
+                    <li><a href="/book-manage/logout">Oi, <?= $_SESSION['auth']->nome?> </a></li> 
                 <?php else: ?>
-                    <li><a href="/login">Fazer Login</a></li> 
+                    <li><a href="/book-manage/login">Fazer Login</a></li> 
                 <?php endif;?>
             </ul>
 

@@ -8,12 +8,13 @@ if( $_SERVER['REQUEST_METHOD'] == 'POST'){
 
     $usuario = $database->query(
         query: "SELECT * FROM usuarios WHERE email = :email AND senha = :senha", 
+        class: Usuario::class,
         params: compact('email', 'senha')
     )->fetch();
 
     if($usuario){
         $_SESSION['auth'] = $usuario;
-        $_SESSION['mensagem'] = 'Seja bem vindo '. $usuario['nome'];
+        $_SESSION['mensagem'] = 'Seja bem vindo '. $usuario->nome;
         header('location: /book-manage');
         exit();
     } else {

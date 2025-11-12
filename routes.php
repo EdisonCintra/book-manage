@@ -11,6 +11,10 @@ switch ($url) {
         require 'controllers/registrar.controller.php';
         break;
 
+    case 'logout':
+    require 'controllers/logout.controller.php';
+    break;
+
     default:
         require 'controllers/index.controller.php';
         break;
