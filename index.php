@@ -6,6 +6,8 @@ require "models/Livro.php";
 
 session_start();
 
+require 'Flash.php';
+
 require "functions.php";
 
 require 'Validacao.php';

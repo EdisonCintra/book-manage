@@ -1,6 +1,5 @@
 <?php
 
-require 'Validacao.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
@@ -12,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     ], $_POST);
 
-    if ($validacao->naoPassou()) {
+    if ($validacao->naoPassou('registrar')) {
 
         $_SESSION['validacoes'] = $validacao->validacoes;
 
@@ -34,7 +33,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     );
 
-    header('location: /book-manage/login?mensagem=Registrado com sucesso!');
+    flash()->push('mensagem', 'Registrado com sucesso!');
+    header('location: /book-manage/login');
 
     exit();
 
