@@ -10,11 +10,9 @@ require 'Flash.php';
 
 require "functions.php";
 
+require "Database.php";
+
 require 'Validacao.php';
-
-$config = require 'config.php';
-
-require "database.php";
 
 require "routes.php";
 
