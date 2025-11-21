@@ -23,21 +23,27 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $usuario = $database->query(
 
-        query: " select * from usuarios where email = :email and senha = :senha",
+        query: " select * from usuarios where email = :email",
 
         class: Usuario::class,
 
-        params: compact('email', 'senha')
+        params: compact('email')
 
     )->fetch();
 
     if ($usuario) {
 
+        if(! password_verify($_POST['senha'], $usuario->senha)){
+            flash()->push('validacoes_login', ['Usuário ou senha não encontrados!']);
+            header('location: /book-manage/login');
+            exit();
+        }
+
         $_SESSION['auth'] = $usuario;
 
         flash()->push('mensagem', "Seja bem-vindo" . $usuario->nome . "!");
 
-        header("Location: /");
+        header("Location: /book-manage");
 
         exit();
 
