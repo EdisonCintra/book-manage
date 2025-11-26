@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -9,7 +9,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
 <body class="bg-stone-950 text-stone-200">
-    
+
     <header class="bg-stone-900">
 
         <nav class="mx-auto max-w-screen-lg flex justify-between py-4">
@@ -24,14 +24,14 @@
             </ul>
 
             <ul>
-                <?php if(isset($_SESSION['auth'])): ?>
-                    <li><a href="/book-manage/logout">Oi, <?= $_SESSION['auth']->nome?> </a></li> 
+                <?php if(auth()): ?>
+                    <li><a href="/book-manage/logout">Oi, <?= auth()->nome?> </a></li>
                 <?php else: ?>
-                    <li><a href="/book-manage/login">Fazer Login</a></li> 
+                    <li><a href="/book-manage/login">Fazer Login</a></li>
                 <?php endif;?>
             </ul>
 
-        </nav> 
+        </nav>
 
     </header>
 
