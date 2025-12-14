@@ -1,12 +1,13 @@
 <?php
-
 $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 $controller = basename($path);
-if ($controller == 'book-manage' || $controller == 'index.php') {
+
+
+if ($controller == 'index.php' || $controller == 'public' || $controller == basename(getcwd()) || empty($controller)) {
     $controller = 'index';
 }
 
-if (! file_exists("controllers/{$controller}.controller.php")) {
+if ( ! file_exists("controllers/{$controller}.controller.php")) {
     abort(404);
 }
 

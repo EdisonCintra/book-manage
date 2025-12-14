@@ -1,43 +1,11 @@
-<form class="w-full flex space-x-2 mt-6">
-
-    <input 
-        type="text" 
-
-        name="pesquisar"
-
-        class="border-stone-800 border-2 rounded-md bg-stone-900 text-sm focus:outline-none px-2 py-1 w-full"
-
-        placeholder="Pesquisar..."
-    >
-
-    <button type="submit">🔎</button>
-
-</form>
-
-<section class="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-
-    <?php foreach($livros as $livro): ?>
-
-        <div class="p-2 rounded border-stone-800 border-2 bg-stone-900">
-
-            <div class="flex">
-
-                <div class="w-1/3"><?= $livro->usuario_id ?></div>
-
-                <div class="space-y-1">
-
-                    <a href="/book-manage/livro?id=<?= $livro->id ?>" class="font-semibold hover:underline"><?= $livro->titulo ?></a>
-                    <div class="text-xs italic"><?= $livro->autor ?></div>
-                    <div class="text-xs italic">⭐⭐⭐⭐⭐(3 Avaliações)</div>
-
-                </div>
-
-            </div>
-
-            <div class="text-sm mt-2"><?= $livro->descricao ?></div>
-
+<div class="hero min-h-screen flex mx-auto max-w-screen-lg">
+    <div class="hero-content">
+        <div>
+            <p class="py-2 text-xl">Bem Vindo ao</p>
+            <h1 class="text-6xl font-bold">LockBox</h1>
+            <p class="pt-2 pb-4 text-xl">Onde você guarda <span class="italic">tudo</span> com segurança</p>
+            <a href="/lockbox/login" class="btn btn-link">Login</a>
+            <a href="/lockbox/registrar" class="btn btn-link">Registrar</a>
         </div>
-
-    <?php endforeach; ?>
-
-</section>
+    </div>
+</div>

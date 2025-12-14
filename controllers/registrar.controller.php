@@ -1,6 +1,5 @@
 <?php
 
-
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $validacao = Validacao::validar([
@@ -13,9 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if ($validacao->naoPassou('registrar')) {
 
-        $_SESSION['validacoes'] = $validacao->validacoes;
-
-        header("Location: /book-manage/login");
+        header("Location: /login");
 
         exit();
 
@@ -28,18 +25,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         params: [
             'nome' => $_POST['nome'],
             'email' => $_POST['email'],
-            'senha' => password_hash($_POST['senha'], PASSWORD_BCRYPT)
+            'senha' => password_hash($_POST['senha'], PASSWORD_DEFAULT)
         ]
 
     );
 
-    flash()->push('mensagem', 'Registrado com sucesso!');
-    header('location: /book-manage/login');
+    flash()->push('mensagem', 'Registrado com sucesso! 👍');
+
+    header('location: /login');
 
     exit();
 
 };
 
-header('location: /login');
+view('registrar');
 
 exit();

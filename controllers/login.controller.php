@@ -13,9 +13,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     ], $_POST);
 
-    if ($validacao->naoPassou('login')) {
+    if ($validacao->naoPassou()) {
 
-        header("Location: /book-manage/login");
+        header("Location: /lockbox/login");
 
         exit();
 
@@ -33,17 +33,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if ($usuario) {
 
-        if(! password_verify($_POST['senha'], $usuario->senha)){
-            flash()->push('validacoes_login', ['Usuário ou senha não encontrados!']);
-            header('location: /book-manage/login');
+        $senhaDoPost = $_POST['senha'];
+
+        $senhaDoBanco = $usuario->senha;
+
+        if (! password_verify($senhaDoPost, $senhaDoBanco)) {
+
+            flash()->push('validacoes_login', ['Usuário ou senha estão incorretos!']);
+
+            header('Location: /login');
+
             exit();
+
         }
 
         $_SESSION['auth'] = $usuario;
 
-        flash()->push('mensagem', "Seja bem-vindo" . $usuario->nome . "!");
+        flash()->push('mensagem', "Seja bem-vindo " . $usuario->nome . "!");
 
-        header("Location: /book-manage");
+        header("Location: /");
 
         exit();
 
