@@ -15,8 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if ($validacao->naoPassou()) {
 
-        header("Location: /lockbox/login");
-
+        view('login');
         exit();
 
     }
