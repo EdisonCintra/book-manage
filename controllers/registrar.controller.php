@@ -10,9 +10,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     ], $_POST);
 
-    if ($validacao->naoPassou('registrar')) {
+    if ($validacao->naoPassou()) {
 
-        header("Location: /login");
+        view('registrar');
 
         exit();
 
@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     flash()->push('mensagem', 'Registrado com sucesso! 👍');
 
-    header('location: /login');
+    header('location: /lockbox/login');
 
     exit();
 

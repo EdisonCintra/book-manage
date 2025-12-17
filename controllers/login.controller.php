@@ -30,31 +30,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     )->fetch();
 
-    if ($usuario) {
 
-        $senhaDoPost = $_POST['senha'];
-
-        $senhaDoBanco = $usuario->senha;
-
-        if (! password_verify($senhaDoPost, $senhaDoBanco)) {
-
-            flash()->push('validacoes_login', ['Usuário ou senha estão incorretos!']);
-
-            header('Location: /login');
-
-            exit();
-
-        }
+    if ($usuario && password_verify($_POST['senha'], $usuario->senha)) {
 
         $_SESSION['auth'] = $usuario;
 
         flash()->push('mensagem', "Seja bem-vindo " . $usuario->nome . "!");
 
-        header("Location: /");
+        header("Location: /lockbox/dashboard");
 
         exit();
-
+    } else {
+        flash()->push('validacoes', ['email' => ['Usuário ou senha estão incorretos!']]);
+        view('login');
+        exit();
     }
+
 
 }
 
