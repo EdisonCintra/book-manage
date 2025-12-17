@@ -1,6 +1,8 @@
-<?php 
+<?php
 
-class Usuario{
+namespace App\Models;
+class Usuario
+{
 
     public $id;
     public $nome;

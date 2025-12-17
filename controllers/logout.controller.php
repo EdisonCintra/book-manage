@@ -2,6 +2,6 @@
 
 session_destroy();
 
-header('Location: /book-manage/login');
+header('Location: /lockbox/login');
 
 exit();

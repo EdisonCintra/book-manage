@@ -1,6 +1,12 @@
 <?php
 
+use App\Models\Usuario;
+use Core\Validacao;
+use Core\Database;
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+    $database = new Database(config('database'));
 
     $email = $_POST['email'];
 

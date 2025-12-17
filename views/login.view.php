@@ -1,3 +1,5 @@
+<?php $validacoes = flash()->get('validacoes'); ?>
+
 <div class="grid grid-cols-2">
 
     <div class="hero min-h-screen flex ml-40">
@@ -33,10 +35,10 @@
                                 <span class="label-text text-black">Email</span>
                             </div>
 
-                            <input type="text" name="email"
-                                   class="input input-bordered w-full max-w-xs bg-white"
-                                   value="<?= old('email') ?>"
-                            />
+                            <input
+                                    type="text" name="email"
+                                    class="input w-full max-w-xs bg-white"
+                                    value="<?= old('email') ?>" />
 
                             <?php if (isset($validacoes['email'])): ?>
                                 <div class="mt-1 text-xs text-error"><?= $validacoes['email'][0] ?></div>
