@@ -6,8 +6,12 @@ class DashboardController
 {
     public function __invoke()
     {
+        if ( ! auth() ) {
+            return redirect('/lockbox/login');
+        }
 
-        echo "dashboardController.__invoke";
-
+        view('dashboard', [
+            'user' => auth()
+        ]);
     }
 }

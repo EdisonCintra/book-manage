@@ -9,4 +9,4 @@ spl_autoload_register(function($class) {
 
 session_start();
 
-require "../routes.php";
+require "../config/routes.php";

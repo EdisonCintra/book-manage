@@ -8,6 +8,6 @@ class LogoutController
     {
         session_destroy();
 
-        return redirect('/login');
+        return redirect('/lockbox/login');
     }
 }
