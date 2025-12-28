@@ -14,7 +14,7 @@ function redirect($uri) {
 
 }
 
-function view($view, $data = []) {
+function view($view, $data = [], $template = 'app') {
 
     foreach($data as $key => $value) {
 
@@ -22,7 +22,7 @@ function view($view, $data = []) {
 
     }
 
-    require  base_path('views/template/app.php');
+    require  base_path("views/template/$template.php");
 
 }
 

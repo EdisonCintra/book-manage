@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Controllers\Notas;
 
-class DashboardController
+class IndexController
 {
     public function __invoke()
     {
@@ -10,7 +10,7 @@ class DashboardController
             return redirect('/lockbox/login');
         }
 
-        view('dashboard', [
+        view('notas', [
             'user' => auth()
         ]);
     }

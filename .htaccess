@@ -1,7 +1,9 @@
-RewriteEngine On
-RewriteBase /book-manage/
+<IfModule mod_rewrite.c>
+    RewriteEngine On
 
-# Redireciona tudo para o index.php
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
+    # Envia a raiz (/) para a pasta public
+    RewriteRule ^$ public/ [L]
+
+    # Envia qualquer outra coisa (/login, /css, etc) para dentro da public
+    RewriteRule ^(.*)$ public/$1 [L]
+</IfModule>
