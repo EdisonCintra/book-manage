@@ -1,7 +1,7 @@
 <?php $validacoes = flash()->get('validacoes'); ?>
 
 <div class="bg-base-300 rounded-l-box w-56">
-    <div class="bg-base-200 p-4">+ Nova Nota</div>
+    <div class="bg-base-200 p-4 rounded-tl-box">+ Nova Nota</div>
 </div>
 
 <div class="bg-base-200 rounded-r-box w-full p-10">
