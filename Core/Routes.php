@@ -46,16 +46,35 @@ class Routes
 
     }
 
+    public function put($uri, $controller, $middleware = null)
+    {
+        $this->addRoute('PUT', $uri, $controller, $middleware);
+
+        return $this;
+    }
+
+    public function delete($uri, $controller, $middleware = null)
+    {
+        $this->addRoute('DELETE', $uri, $controller, $middleware);
+
+        return $this;
+    }
+
     public function run()
     {
-        $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-        $uri = str_replace('/lockbox', '', $uri); //local
+        $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
 
-        $httpMethod = $_SERVER['REQUEST_METHOD'];
+
+        $uri = str_replace('/lockbox', '', $uri);
+
+
+        $httpMethod = request()->post('__method', $_SERVER['REQUEST_METHOD']);
 
         if (!isset($this->routes[$httpMethod][$uri])) {
+
             abort(404);
         }
+
         $routeInfo = $this->routes[$httpMethod][$uri];
 
         $class = $routeInfo['class'];
@@ -63,12 +82,11 @@ class Routes
         $middleware = $routeInfo['middleware'];
 
         if ($middleware) {
-            $m = new $middleware();
+            $m = new $middleware;
             $m->handle();
         }
 
-        $c = new $class();
+        $c = new $class;
         $c->$method();
-
     }
 }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Controllers\Notas\DeleteController;
 use Core\Routes;
 
 use App\Controllers\IndexController;
@@ -25,5 +26,14 @@ use App\Middlewares\GuestMiddleware;
     ->get('/notas', Notas\IndexController::class, AuthMiddleware::class)
     ->get('/notas/criar', [Notas\CriarController ::class, 'index'], AuthMiddleware::class)
     ->post('/notas/criar', [Notas\CriarController ::class, 'store'], AuthMiddleware::class)
+
+    ->put('/nota', Notas\AtualizarController::class, AuthMiddleware::class)
+    ->delete('/nota', DeleteController::class, AuthMiddleware::class)
+
+    ->get('/confirmar', [Notas\VizualizarController ::class, 'confirmar'], AuthMiddleware::class)
+    ->post('/mostrar', [Notas\VizualizarController ::class, 'mostrar'], AuthMiddleware::class)
+    ->get('/esconder', [Notas\VizualizarController ::class, 'esconder'], AuthMiddleware::class)
+
+
 
     ->run();

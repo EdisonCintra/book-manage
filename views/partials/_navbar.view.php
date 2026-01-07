@@ -5,7 +5,13 @@
 
     <div class="flex-none">
         <ul class="menu menu-horizontal px-1">
-            <li><a href="/lockbox/mostrar">👁️</a></li>
+            <li>
+                <?php if ( session()->get('mostrar') ): ?>
+                    <a href="/lockbox/esconder">🫣</a>
+                <?php else: ?>
+                    <a href="/lockbox/confirmar">👀</a>
+                <?php endif; ?>
+            </li>
             <li>
                 <details>
                     <summary><?= auth()->nome ?></summary>
